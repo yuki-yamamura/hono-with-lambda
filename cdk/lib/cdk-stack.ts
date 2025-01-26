@@ -11,9 +11,10 @@ export class CdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, { ...props, env: { ...props?.env, ...env } });
 
+    console.log(path.join(__dirname, "../../apps/backend/src/index.ts"));
+
     const fn = new NodejsFunction(this, "lambda", {
-      // entry: path.join(__dirname, "../../apps/backend/src/index.ts"),
-      entry: path.join(__dirname, "../src/index.ts"),
+      entry: path.join(__dirname, "../../apps/backend/src/index.ts"),
       handler: "handler",
       runtime: lambda.Runtime.NODEJS_20_X,
     });
